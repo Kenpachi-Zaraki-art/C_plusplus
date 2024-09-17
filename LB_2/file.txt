@@ -1,0 +1,53 @@
+// Task 1
+// N6
+#include <iostream>
+
+double calculateY(double x, double b, double c) {
+    double y;
+    if (x < 2) {
+        y = (x - 9 * b * x)/(x - 2 * b * x * x);
+    } else {
+        y = (x - 2 * c * x)/(x - 5 * c * x * x * x);
+    }
+    return y;
+}
+
+int main() {
+    double x, b, c;
+    std::cout << Enter x, b and c: ;
+    std::cin >> x >> b >> c;
+
+    double y = calculateY(x, b, c);
+    std::cout << Value Y:  << y << std::endl;
+
+    return 0;
+}
+// Task 2
+// N18
+#include <iostream>
+
+bool isPointInShadedArea(double x, double y) {
+  
+    if (x >= -1 && x <= 0 && y >= 0 && y <= 1) {
+        return true;
+    }
+   
+    if (x >= 0 && x <= 1 && y >= -1 && y <= 0) {
+        return true;
+    }
+    return false;
+}
+
+int main() {
+    double x, y;
+    std::cout << "Enter (x, y): ";
+    std::cin >> x >> y;
+
+    if (isPointInShadedArea(x, y)) {
+        std::cout << "Hits." << std::endl;
+    } else {
+        std::cout << "Does not hits." << std::endl;
+    }
+
+    return 0;
+}
