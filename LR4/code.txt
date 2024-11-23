@@ -15,52 +15,46 @@ int main(void) {
 }
 //task 7 
 #include <iostream>
-#include <iomanip> // Для встановлення точності
+#include <iomanip> 
 using namespace std;
 
 int main(void) {
-    // Оголошення п'яти змінних
+   
     double var1, var2, var3, var4;
     int var5;
 
-    // Присвоєння значень з вводу цим змінним
+    
     cout << "Enter five values:" << endl;
     cin >> var1 >> var2 >> var3 >> var4 >> var5;
 
-    // Вивід змінних із заданим форматуванням
+    
     cout << fixed << setprecision(1) << var1 << endl; // 2.3
     cout << fixed << setprecision(2) << var2 << endl; // 2.30
-
-    // Вивід змінної var3 з шістьма десятковими знаками
     cout << fixed << setprecision(6) << var3 << endl; // 2.123456
-    
-    // Вивід змінної var4 з двома десятковими знаками
     cout << fixed << setprecision(2) << var4 << endl; // 2.12
-    
-    // Вивід змінної var5 як ціле число
-    cout << static_cast<int>(var5) << endl;           // 2 (перетворення в int)
+    cout << static_cast<int>(var5) << endl;           // 2
     
     return 0;
 }
 // task 8
 #include <iostream>
-#include <cmath> // Для функції abs
+#include <cmath> 
 using namespace std;
 
 int main(void) {
-    // Константа для epsilon порівняння
+    
     const float EPSILON = 0.000001;
 
-    // Запит двох цілих чисел у користувача
+
     int num1, num2;
     cout << "Enter two integer numbers: ";
     cin >> num1 >> num2;
 
-    // Ділення 1 на кожне з чисел з приведенням до float
+
     float result1 = 1.0f / num1;
     float result2 = 1.0f / num2;
 
-    // Порівняння результатів з використанням epsilon
+ 
     if (abs(result1 - result2) < EPSILON) {
         cout << "Results are equal (by 0.000001 epsilon)" << endl;
     } else {
@@ -79,13 +73,11 @@ int main() {
     cout << "Enter four numbers for IP address (each between 1 and 255):" << endl;
     cin >> num1 >> num2 >> num3 >> num4;
 
-    // Check if the numbers are within the range 1-255
     if ((num1 >= 1 && num1 <= 255) &&
         (num2 >= 1 && num2 <= 255) &&
         (num3 >= 1 && num3 <= 255) &&
         (num4 >= 1 && num4 <= 255)) {
-        
-        // Concatenate and print the IP address
+         
         cout << num1 << "." << num2 << "." << num3 << "." << num4 << endl;
     } else {
         cout << "One or more numbers are out of the range 1-255." << endl;
