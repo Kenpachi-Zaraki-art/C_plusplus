@@ -1,54 +1,37 @@
 #include <iostream>
-#include <cmath> // for mathematical functions
+#include <cmath>
 
-using namespace std;
+const double PI = 3.141592653589793;
 
-int main() {
-    double a, b;
-    cout << "Enter value for a: ";
-    cin >> a;
-    cout << "Enter value for b: ";
-    cin >> b;
+// Функція для обчислення другого варіанту
+double calculateVariant21(double a, double b) {
+    // Перший логарифмічний доданок
+    double numerator1 = 1 - std::cos((a / b) * PI);
+    double denominator1 = 1 + std::cos((a / b) * PI);
+    double logTerm1 = 0.5 * std::log(numerator1 / denominator1);
 
-    if (a == 0 || b == 0) {
-        cout << "Error: a and b must not be zero" << endl;
-        return 1;
-    }
+    // Другий логарифмічний доданок
+    double numerator2 = 1 - std::sin((b / a) * PI);
+    double denominator2 = 1 + std::sin((b / a) * PI);
+    double logTerm2 = 0.3 * std::log(numerator2 / denominator2);
 
-    double numerator = log(cos((a - b) * M_PI / 8));
-    double denominator = 0.137;
-    double fraction = pow((a - b) / (b + a), 1.0 / 3);
-    double y = fraction * numerator / denominator * M_E;
+    // Обчислення експонент
+    double expTerm1 = std::exp(logTerm1 / (1 + std::cos((a / b) * PI)));
+    double expTerm2 = std::exp(logTerm2);
 
-    cout << "Value of y: " << y << endl;
-
-    return 0;
+    // Загальний результат
+    double result = std::sqrt(expTerm1 + expTerm2);
+    return result;
 }
 
-// N23.
-#include <iostream>
-#include <cmath> // for mathematical functions
-
-using namespace std;
-
 int main() {
-    double a, b;
+    // Вхідні значення
+    double a = 2;
+    double b = 13.17;
 
-    cout << "Enter the value of a: ";
-    cin >> a;
-    cout << "Enter the value of b: ";
-    cin >> b;
-
-    if (a == 0) {
-        cout << "Error: a should not be equal to 0" << endl;
-        return 1;
-    }
-
-    double numerator = 0.75 * exp(1 - b) + 0.31 * exp(1 - a);
-    double denominator = 0.731 + pow(sin(2 * b / a - M_PI), 2);
-    double y = numerator / denominator;
-
-    cout << "The value of y: " << y << endl;
+    // Обчислення другого варіанту
+    double result = calculateVariant21(a, b);
+    std::cout << "Variant 21 result: " << result << std::endl;
 
     return 0;
 }
