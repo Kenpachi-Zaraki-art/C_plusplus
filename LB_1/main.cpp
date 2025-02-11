@@ -1,37 +1,22 @@
+//Task 1
 #include <iostream>
-#include <cmath>
+using namespace std;
 
-const double PI = 3.141592653589793;
+int main(void) {
+    int vector[] = { 3, -5, 7, 10, -4, 14, 5, 2, -13 };
+    int n = sizeof(vector) / sizeof(vector[0]);
 
-// Функція для обчислення другого варіанту
-double calculateVariant21(double a, double b) {
-    // Перший логарифмічний доданок
-    double numerator1 = 1 - std::cos((a / b) * PI);
-    double denominator1 = 1 + std::cos((a / b) * PI);
-    double logTerm1 = 0.5 * std::log(numerator1 / denominator1);
+    int *ptr = vector;
+    int *minPtr = vector;
 
-    // Другий логарифмічний доданок
-    double numerator2 = 1 - std::sin((b / a) * PI);
-    double denominator2 = 1 + std::sin((b / a) * PI);
-    double logTerm2 = 0.3 * std::log(numerator2 / denominator2);
+    for (int i = 1; i < n; ++i) {
+        if (*(ptr + i) < *minPtr) {
+            minPtr = ptr + i;
+        }
+    }
 
-    // Обчислення експонент
-    double expTerm1 = std::exp(logTerm1 / (1 + std::cos((a / b) * PI)));
-    double expTerm2 = std::exp(logTerm2);
-
-    // Загальний результат
-    double result = std::sqrt(expTerm1 + expTerm2);
-    return result;
-}
-
-int main() {
-    // Вхідні значення
-    double a = 2;
-    double b = 13.17;
-
-    // Обчислення другого варіанту
-    double result = calculateVariant21(a, b);
-    std::cout << "Variant 21 result: " << result << std::endl;
+    cout << "The smallest element of the array: " << *minPtr << endl;
 
     return 0;
 }
+//Task 2
