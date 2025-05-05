@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(0)); 
+    int matrix[5][5]; 
+    int* ptr = &matrix[0][0];
+    
+    cout << "Generated matrix:" << endl;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            *ptr = rand() % 50 + 1;  
+            cout.width(4);
+            cout << *ptr << " ";
+            ptr++; 
+        }
+        cout << endl;
+    }
+    
+    cout << "\nMain diagonal elements: ";
+    ptr = &matrix[0][0]; 
+    for (int i = 0; i < 5; i++) {
+        cout << *(ptr + i * 5 + i) << " "; 
+    }
+    cout << endl;
+
+  
+    cout << "Secondary diagonal elements: ";
+    for (int i = 0; i < 5; i++) {
+        cout << *(ptr + i * 5 + (4 - i)) << " ";
+    }
+    cout << endl;
+
+    int evenCount = 0, oddCount = 0;
+    ptr = &matrix[0][0];
+    for (int i = 0; i < 25; i++) {
+        if (*ptr % 2 == 0) {
+            evenCount++; 
+        } else {
+            oddCount++;
+        }
+        ptr++;
+    }
+
+    cout << "\nTotal even numbers: " << evenCount << endl;
+    cout << "Total odd numbers: " << oddCount << endl;
+
+    return 0;
+}
