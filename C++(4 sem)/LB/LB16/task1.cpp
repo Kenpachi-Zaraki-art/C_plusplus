@@ -1,6 +1,8 @@
 #include <iostream> 
 #include <ctime>  
 
+using namespace std;
+
 
 struct Date {
     int year;  
@@ -31,8 +33,8 @@ int monthLength(int year, int month) {
 
 
 Date today(void) {
-    std::time_t t = std::time(NULL); 
-    std::tm tl = *std::localtime(&t); 
+    time_t t = time(NULL); 
+    tm tl = *localtime(&t); 
 
     Date today_date; 
     today_date.year = tl.tm_year + 1900; 
@@ -63,15 +65,15 @@ long long daysSinceBeginning(Date date) {
 
 int main(void) {
     Date t = today(); 
-    std::cout << "Поточна дата: " << t.year << "-" << t.month << "-" << t.day << std::endl; 
+    cout << "Поточна дата: " << t.year << "-" << t.month << "-" << t.day << endl; 
 
     int birthYear, birthMonth, birthDay; 
-    std::cout << "Введіть рік народження: "; 
-    std::cin >> birthYear;               
-    std::cout << "Введіть місяць народження: "; 
-    std::cin >> birthMonth;             
-    std::cout << "Введіть день народження: ";   
-    std::cin >> birthDay;                
+    cout << "Введіть рік народження: "; 
+    cin >> birthYear;               
+    cout << "Введіть місяць народження: "; 
+    cin >> birthMonth;             
+    cout << "Введіть день народження: ";   
+    cin >> birthDay;                
 
     Date birthday = {birthYear, birthMonth, birthDay}; 
 
@@ -80,7 +82,7 @@ int main(void) {
 
     long long differenceInDays = daysToday - daysBirthday; 
 
-    std::cout << "Кількість днів, що пройшли від вашого дня народження до поточної дати: "
-              << differenceInDays << " днів." << std::endl; 
+    cout << "Кількість днів, що пройшли від вашого дня народження до поточної дати: "
+              << differenceInDays << " днів." << endl; 
     return 0; 
 }
